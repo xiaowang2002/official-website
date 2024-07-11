@@ -1,19 +1,62 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import PageView from "@/views/PageView";
+import HomePage from "@/views/HomePage";
+import Software from "@/views/Software";
+import Service from "@/views/Service";
+import NewsInformation from "@/views/NewsInformation";
+import ContactUs from "@/views/ContactUs";
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    name: 'PageView',
+    component: PageView,
+    children: [
+      {
+        path: '/',
+        redirect: '/home'
+      },
+      {
+        path: '/home',
+        name: 'home',
+        component: HomePage,
+        meta: {
+          title: '友加云商'
+        }
+      },
+      {
+        path: '/software',
+        name: 'software',
+        component: Software,
+        meta: {
+          title: '友加云商'
+        }
+      },
+      {
+        path: '/service',
+        name: 'service',
+        component: Service,
+        meta: {
+          title: '友加云商'
+        }
+      },
+      {
+        path: '/newsinformation',
+        name: 'newsinformation',
+        component: NewsInformation,
+        meta: {
+          title: '友加云商'
+        }
+      },
+      {
+        path: '/contactus',
+        name: 'contactus',
+        component: ContactUs,
+        meta: {
+          title: '友加云商'
+        }
+      },
+    ]
   }
 ]
 
